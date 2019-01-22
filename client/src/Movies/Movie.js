@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import SavedList from './SavedList.js';
 import axios from 'axios';
 
 export default class Movie extends Component {
@@ -26,16 +27,16 @@ export default class Movie extends Component {
       });
   };
   // Uncomment this code when you're ready for the stretch problems
-  // componentWillReceiveProps(newProps){
+   //componentWillReceiveProps(newProps){
   //   if(this.props.match.params.id !== newProps.match.params.id){
-  //     this.fetchMovie(newProps.match.params.id);
-  //   }
-  // }
+    //   this.fetchMovie(newProps.match.params.id);
+     //}
+   //}
 
-  // saveMovie = () => {
-  //   const addToSavedList = this.props.addToSavedList;
-  //   addToSavedList(this.state.movie)
-  // }
+   saveMovie = () => {
+     const addToSavedList = this.props.addToSavedList;
+     addToSavedList(this.state.movie)
+   }
 
   render() {
     if (!this.state.movie) {
@@ -61,7 +62,8 @@ export default class Movie extends Component {
             </div>
           ))}
         </div>
-        <div className="save-button">Save</div>
+        <div onClick = {()=>this.props.saveMovie(this.state.movie)} className="save-button">Save</div>
+
       </div>
     );
   }
